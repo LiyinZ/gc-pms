@@ -1,0 +1,23 @@
+{# user profile #}
+{% extends 'main.twig' %}
+{% block title %}{{ user.first_name }}'s Profile{% endblock %}
+
+{% block content %}
+<main class="profile">
+    <h2>{{ user.first_name }} {{ user.last_name }}'s Profile</h2>
+    <dl>
+        <dt>First Name</dt>
+        <dd>{{ user.first_name }}</dd>
+        <dt>Last Name</dt>
+        <dd>{{ user.last_name }}</dd>
+        <dt>Email</dt>
+        <dd>{{ user.email }}</dd>
+        <dt>Phone Number</dt>
+        <dd>{{ user.phone }}</dd>
+    </dl>
+    <a href="edit">
+        <button>Edit</button>
+    </a>
+</main>
+
+{% endblock %}

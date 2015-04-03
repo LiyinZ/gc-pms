@@ -1,0 +1,38 @@
+{# footer.twig #}
+<footer class="footer-2" role="contentinfo">
+    <div class="footer-logo">
+        <img src="{{ imgPath }}{{ logo.file_name|default('original_logo.png') }}" alt="Logo image">
+    </div>
+    <ul>
+        <li><a href="/pms/page/about">About</a></li>
+        <li><a href="/pms/page/contact">Contact</a></li>
+    </ul>
+
+
+
+    <div class="footer-secondary-links">
+        <ul>
+            <li><a href="javascript:void(0)">Terms and Conditions</a></li>
+            <li><a href="javascript:void(0)">Privacy Policy</a></li>
+        </ul>
+
+        <ul class="footer-social">
+            <li><a href="javascript:void(0)">
+                    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/facebook-logo-circle.png" alt="Facebook">
+                </a></li>
+            <li><a href="javascript:void(0)">
+                    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/twitter-logo-circle.png" alt="Twitter">
+                </a></li>
+            <li><a href="javascript:void(0)">
+                    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/youtube-logo-circle.png" alt="YouTube">
+                </a></li>
+        </ul>
+
+    </div>
+
+    <p class="copyright">&copy; 2010 - {{ "now"|date("Y") }} My Barrie Home</p>
+</footer>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="{{ jsPath }}all.js"></script>

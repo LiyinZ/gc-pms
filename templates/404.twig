@@ -1,0 +1,22 @@
+{# admin registration page #}
+
+{% extends 'main.twig' %}
+{% block title %}404 Not Found{% endblock %}
+
+{% block content %}
+
+    <main class="not-found">
+        <h2>The Page You Requested Does Not Exist</h2>
+        <h3>Please take a look at other pages instead!</h3>
+        <ul>
+            <li><a href="/pms">Home</a></li>
+            {% for page in pages %}
+                <li><a href="/pms/page/{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+        </ul>
+        <p>Or Sign up at the top right hand corner!</p>
+        <p>Unless, of course...</p>
+        <p>You have already signed in :)</p>
+    </main>
+
+{% endblock %}

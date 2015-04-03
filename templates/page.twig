@@ -1,0 +1,25 @@
+{# user generated page template #}
+{% extends 'main.twig' %}
+{% block title %}Page Title{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style>
+        .cover-photo {
+            background-image: url('{{ imgPath }}{{ page.cover_file_name }}');
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="cover-photo">
+        <div class="heading">
+            <h1>{{ page.title }}</h1>
+            <h3>{{ page.subtitle }}</h3>
+        </div>
+        <div class="overlay"></div>
+    </div>
+
+    <main class="page-content" role="main">
+        {{ page.html|raw }}
+    </main>
+{% endblock %}

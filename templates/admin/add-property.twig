@@ -1,0 +1,96 @@
+{# add property page #}
+{% extends 'main.twig' %}
+{% block title %}Create New Property{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style>
+        .grid-item-image-1 {
+            background: url('http://placehold.it/800x600');
+        }
+        .grid-item-image-2 {
+            background: url('{{ imgPath }}85.jpg');
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+    <div class="grid-items">
+        <div class="grid-item grid-item-image-1">
+            <label for="propertyPhotos">Preferred File Size < 1Mb</label>
+        </div>
+        <div class="grid-item grid-item-image-2">
+            <label for="propertyPhotos">Upload Photos for Property</label>
+            <input type="file" name="propertyPhotos[]" id="propertyPhotos" multiple="multiple">
+        </div>
+    </div>
+    <main class="add-property">
+        <h2>Create New Property</h2>
+        <fieldset class="address-and-type">
+            <input type="text" name="address" id="address" placeholder="Address"/>
+            <input type="text" name="city" id="city" value="Barrie" placeholder="city"/>
+            <p>
+                <label for="province">Province</label>
+                <select name="province" id="province">
+                    <option value="on">ON</option>
+                    <option value="bc">BC</option>
+                </select>
+            </p>
+            <input type="text" name="postal" id="postal" placeholder="Postal e.g. L4M 5C1"/>
+            <p>
+                <label for="type">Property Type</label>
+                <select name="type" id="type">
+                    <option value="detached">Detached</option>
+                    <option value="semi"></option>
+                    <option value="condo">Condo</option>
+                    <option value="townhouse">Townhouse</option>
+                </select>
+            </p>
+        </fieldset>
+
+        <div class="grid-items-lines rooms">
+            <div class="grid-item">
+                <input type="text" name="name" id="name" placeholder="Room Name"/>
+                <img src="http://placehold.it/200x150" alt="room pic"/>
+                <p>
+                    <input type="number" name="price" id="price" placeholder="price e.g.500"/>
+                    <input type="text" name="floor" id="floor" placeholder="floor? e.g. 2nd, basement"/>
+                    <label for="status">Status ?</label>
+                    <span class="tooltip">Enter the date it becomes available, future or past, format <strong>yyyy-mm-dd</strong>. </span>
+                    <input type="date" name="status" id="status"/>
+                </p>
+            </div>
+            <div class="grid-item">
+                <h3>Room X <em>- Example Preview</em></h3>
+                <img src="{{ imgPath }}111.jpg" alt="room pic"/>
+                <dl>
+                    <dt>Price</dt>
+                    <dd>$500/month</dd>
+                    <dt>Floor</dt>
+                    <dd>2nd</dd>
+                </dl>
+                <div>
+                    <button>Reserve</button>
+                    <dl>
+                        <dt>Status</dt>
+                        <dd>6 months left</dd>
+                    </dl>
+                </div>
+                <button class="add-room">Add Room</button>
+            </div>
+            <div class="right-cover"></div>
+            <div class="bottom-cover"></div>
+        </div>
+        <hr/>
+        <div class="features">
+            <p><strong>Note:</strong> Standard Features are loaded from the Features page, hence, edit the Features page for features apply across all listings</p>
+            {# about listing (textarea, markdown) #}
+            <label for="about">About the Listing</label>
+            <textarea name="about" id="about" cols="30" rows="10"></textarea>
+            {# exclusive feature (textarea, markdown) #}
+            <label for="exclusive">Exclusive Features</label>
+            <textarea name="exclusive" id="exclusive" cols="30" rows="10"></textarea>
+        </div>
+        <button class="save" type="submit">Save</button>
+    </main>
+    </form>
+{% endblock %}

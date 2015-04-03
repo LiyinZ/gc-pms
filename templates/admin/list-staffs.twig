@@ -1,0 +1,65 @@
+{# admin staff page #}
+{% extends 'main.twig' %}
+{% block title %}Your Staffs{% endblock %}
+
+{% block content %}
+    <main class="admin staff">
+        <h2>Your Staffs</h2>
+        <div class="add">
+            <a href="/pms/add/staff"><button>Add Member</button></a>
+        </div>
+        <table class="table-minimal">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Level</th>
+                <th>Update</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for admin in admins %}
+                <tr>
+                    <td><a href="user/{{ admin.id|e }}">{{ admin.first_name|e }}</a></td>
+                    <td><a href="tel:{{ admin.phone|e }}">{{ admin.phone|e }}</a></td>
+                    <td><a href="mailto:{{ admin.email|e }}">{{ admin.email|e }}</a></td>
+                    <td>Admin</td>
+                    <td>
+                        {% if is_admin %}
+                            <a href="edit/{{ admin.id|e }}"><button class="update">Edit</button></a>
+                            <form class="delete" action="/pms/delete/user/{{ admin.id }}" method="post">
+                                <input type="hidden" name="_METHOD" value="DELETE"/>
+                                <button type="submit">Delete</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            {% for staff in staffs %}
+                <tr>
+                    <td><a href="user/{{ staff.id|e }}">{{ staff.first_name|e }}</a></td>
+                    <td><a href="tel:{{ staff.phone|e }}">{{ staff.phone|e }}</a></td>
+                    <td><a href="mailto:{{ staff.email|e }}">{{ staff.email|e }}</a></td>
+                    <td>Staff</td>
+                    <td>
+                        {% if is_admin %}
+                            <a href="edit/{{ staff.id|e }}"><button class="update">Edit</button></a>
+                            <form class="delete" action="/pms/delete/user/{{ staff.id }}" method="post">
+                                <input type="hidden" name="_METHOD" value="DELETE"/>
+                                <button type="submit">Delete</button>
+                            </form>
+                        {% elseif current_id == staff.id %}
+                            <a href="edit/{{ staff.id|e }}"><button class="update">Edit</button></a>
+                            <form class="delete" action="/pms/delete/user/{{ staff.id }}" method="post">
+                                <input type="hidden" name="_METHOD" value="DELETE"/>
+                                <button type="submit">Delete</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

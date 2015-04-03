@@ -1,0 +1,153 @@
+{# homepage #}
+{% extends 'main.twig' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-inner">
+        <a href="" class="hero-logo"><img src="{{ imgPath }}{{ logo.file_name|default('original_logo.png') }}" alt="Logo Image"></a>
+        <div class="hero-copy">
+            <h1>Barrie Student Home Rental</h1>
+            <p>The Ultimate Student Lifestyle on the Georgian campus in Barrie.</p>
+        </div>
+        <a href="#listings"><button>Take a Look</button></a>
+    </div>
+    <div class="filter">
+        <form action="" method="post">
+            <select name="type" id="type">
+                <option value="any" selected>Any Type</option>
+                <option value="detached">Detached</option>
+                <option value="semi">Semi-Detached</option>
+                <option value="condo">Condo</option>
+                <option value="townhouse">Townhouse</option>
+            </select>
+            <input type="number" name="range" id="range" placeholder="Price Under e.g. 700"/>
+            <button type="submit">Filter</button>
+        </form>
+    </div>
+</div>
+
+<main class="content" id="listings" role="main">
+
+    <h2>Newly Listed</h2>
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ imgPath }}185H.jpg" alt="">
+            </div>
+            <div class="card-header">
+                97 Bernick Drive, Barrie
+            </div>
+            <div class="card-content">
+                <dl>
+                    <dt>Type</dt>
+                    <dd>Semi-Detached</dd>
+                </dl>
+                <dl>
+                    <dt>Rooms</dt>
+                    <dd>3/4 Vacant</dd>
+                </dl>
+            </div>
+            <div class="card-footer">
+                <a class="interested" href="javascript:void(0)">Interested</a>
+                <p><strong>$560</strong>/month</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ imgPath }}102H.jpg" alt="">
+            </div>
+            <div class="card-header">
+                Another Card
+            </div>
+            <div class="card-content">
+                <dl>
+                    <dt>Type</dt>
+                    <dd>Detached</dd>
+                </dl>
+                <dl>
+                    <dt>Rooms</dt>
+                    <dd>2/3 Vacant</dd>
+                </dl>
+            </div>
+            <div class="card-footer">
+                <a class="interested" href="javascript:void(0)">Interested</a>
+                <p><strong>$700</strong>/month</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a href="property" class="card-image">
+                <img src="{{ imgPath }}121.jpg" alt="">
+            </a>
+            <div class="card-header">
+                The Last Card
+            </div>
+            <div class="card-content">
+                <dl>
+                    <dt>Type</dt>
+                    <dd>Condo</dd>
+                </dl>
+                <dl>
+                    <dt>Rooms</dt>
+                    <dd>1/2 Vacant</dd>
+                </dl>
+            </div>
+            <div class="card-footer">
+                <a class="interested" href="javascript:void(0)">Interested</a>
+                <p><strong>$480</strong>/month</p>
+            </div>
+        </div>
+    </div>
+
+    <a id="view-more" href="/pms/all">View More</a>
+
+    <hr/>
+
+    <h2>Included Features</h2>
+
+    <ul class="bullets">
+        <li class="bullet three-col-bullet">
+            <div class="bullet-icon bullet-icon-1">
+                <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2.png
+" alt="">
+            </div>
+            <div class="bullet-content">
+                <h3>Free Internet</h3>
+                <ul>
+                    <li>Unlimited</li>
+                    <li>Up to 60Mbps download</li>
+                </ul>
+            </div>
+        </li>
+        <li class="bullet three-col-bullet">
+            <div class="bullet-icon bullet-icon-2">
+                <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3.png" alt="">
+            </div>
+            <div class="bullet-content">
+                <h3>Free Cable</h3>
+                <ul>
+                    <li>Watch your favorite Sports</li>
+                </ul>
+            </div>
+        </li>
+        <li class="bullet three-col-bullet">
+            <div class="bullet-icon bullet-icon-3">
+                <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_4.png" alt="">
+            </div>
+            <div class="bullet-content">
+                <h3>Free Hydro & Heating</h3>
+                <ul>
+                    <li>As well as FREE parking</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <a id="more-features" href="/pms/page/features">All Features</a>
+
+</main>
+
+{% endblock %}

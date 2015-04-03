@@ -1,0 +1,44 @@
+{# edit profile #}
+{% extends 'main.twig' %}
+{% block title %}{{ user.first_name }}'s Profile{% endblock %}
+
+{% block content %}
+    <main class="profile edit">
+        <h2>Edit {{ user.first_name }}'s Profile</h2>
+
+        <form class="user" action="/pms/user/update/{{ id }}" method="post">
+
+            {# first last name #}
+            <span class="flash-error">{{ flash['edit_errs']['name'] }}</span>
+            <input type="text" name="first_name" id="first_name" value="{{ flash['old_edit']['first_name']|default(user.first_name) }}" placeholder="First Name" required/>
+            <input type="text" name="last_name" id="last_name" value="{{ flash['old_edit']['last_name']|default(user.last_name) }}" placeholder="Last Name" required/>
+            {# email #}
+            <h3>{{ user.email }}</h3>
+            <p><em>Account email cannot be edited, you can delete and re-sign up if necessary</em></p>
+            {# phone #}
+            <span class="flash-error">{{ flash['edit_errs']['phone'] }}</span>
+            <input type="text" name="phone" id="phone" placeholder="e.g. 7058982233" value="{{ flash['old_edit']['phone']|default(user.phone) }}" placeholder="Phone"/>
+            {# Old password #}
+            <span class="flash-error">{{ flash['edit_errs']['old_password'] }}</span>
+            <label for="old_password">Old Password</label>
+            <input type="password" name="old_password" id="old_password" placeholder="Only needed if changing password"/>
+            {# New passwords #}
+            <label for="password">New Password</label>
+            <span class="flash-error">{{ flash['edit_errs']['new_password'] }}</span>
+            <input type="password" name="password" id="password" placeholder="Password"/>
+            <input type="password" name="pw_confirm" id="pw_confirm" placeholder="Verify Password"/>
+            {# submit #}
+            <button class="save" type="submit">Save</button>
+        </form>
+        {% if id %}
+            <a href="/pms/admin/staff"><button class="cancel">Cancel</button></a>
+        {% else %}
+            <a href="/pms/user/profile"><button class="cancel">Cancel</button></a>
+            <form class="delete" action="/pms/delete/user/{{ user.id }}" method="post">
+                <input type="hidden" name="_METHOD" value="DELETE"/>
+                <button type="submit">Delete</button>
+            </form>
+        {% endif %}
+    </main>
+
+{% endblock %}

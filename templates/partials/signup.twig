@@ -1,0 +1,24 @@
+<div class="modal">
+    <input class="modal-state" id="modal-signup" type="checkbox" {% if flash['signup_errs'] %}checked{% endif %}/>
+    <div class="modal-fade-screen">
+        <div class="modal-inner">
+            <label class="modal-close" for="modal-signup"></label>
+            <h3>Sign Up</h3>
+            <form action="/pms/user/signup{{ uri }}" method="post" id="sign-up">
+                {# first last name #}
+                <span class="flash-error">{{ flash['signup_errs']['name'] }}</span>
+                <input type="text" name="first_name" id="first_name" placeholder="First Name" value="{{ flash['old_su']['first_name'] }}" required/>
+                <input type="text" name="last_name" id="last_name" placeholder="Last Name" value="{{ flash['old_su']['last_name'] }}" required/>
+                {# email #}
+                <span class="flash-error">{{ flash['signup_errs']['email'] }}</span>
+                <input type="email" name="email" id="email" placeholder="Email Address" value="{{ flash['old_su']['email'] }}" required/>
+                {# password #}
+                <span class="flash-error">{{ flash['signup_errs']['new_password'] }}</span>
+                <input type="password" name="password" id="password" placeholder="Password" required/>
+                <input type="password" name="pw_confirm" id="pw_confirm" placeholder="Confirm Password" required/>
+                {# submit #}
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>

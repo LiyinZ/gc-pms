@@ -1,0 +1,85 @@
+<header class="navigation" role="banner">
+    <div class="navigation-wrapper">
+        <a href="/pms" class="logo">
+            <img src="{{ imgPath }}{{ logo.file_name|default('original_logo.png') }}" alt="Logo Image">
+        </a>
+        <a id="call-phone" href="#call-phone">(705)898-2879</a>
+        <a href="#" class="navigation-menu-button js-menu-trigger">MENU</a>
+        <nav role="navigation">
+            <ul id="js-navigation-menu" class="navigation-menu">
+                {% for page in pages|slice(0, 2) %}
+                    <li class="nav-link"><a href="/pms/page/{{ page.url }}">{{ page.title }}</a></li>
+                {% endfor %}
+                <li class="nav-link more"><a href="javascript:void(0)">More</a>
+                    <ul class="submenu">
+                        <li><a href="/pms/all">All Listings</a></li>
+                        {% for page in pages|slice(2, 10) %}
+                            <li><a href="/pms/page/{{ page.url }}">{{ page.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                {# login / logout #}
+                {% if session.isLoggedIn() %}
+                    {% set user = session.getUser() %}
+                    <li class="nav-link more">
+                        <a>Hi, {{ user.first_name }}</a>
+                        <ul class="submenu">
+                            {% if user.isStaff() %}
+                            <li><a href="/pms/admin">Admin Panel</a></li>
+                            <li><a href="/pms/admin/page">Manage Pages</a></li>
+                            {% endif %}
+                            <li><a href="/pms/user/profile">Profile</a></li>
+                            <li><a href="/pms/user/logout">Log Out</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                <li class="nav-link">
+                    <label for="modal-signup">
+                        <a class="sign-up">Sign Up</a>
+                    </label>
+                </li>
+                <li class="nav-link">
+                    <label for="modal-login">
+                        <a>Log In</a>
+                    </label>
+                </li>
+                {% endif %}
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="side-nav-wrapper">
+        <button type="button" class="js-menu-trigger sliding-menu-button">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </button>
+        <nav class="js-menu sliding-menu-content">
+            <hr/>
+            <ul>
+                {% if session.isLoggedIn() %}
+                    {% if user.isStaff() %}
+                        <li><a href="/pms/admin">Admin Panel</a></li>
+                        <li><a href="/pms/admin/page">Manage Pages</a></li>
+                    {% endif %}
+                    <li><a href="/pms/user/profile">Profile</a></li>
+                    <li><a href="/pms/user/logout">Log Out</a></li>
+                {% else %}
+                    <li><label for="modal-signup"><a>Sign Up</a></label></li>
+                    <li><label for="modal-login"><a>Log In</a></label></li>
+                {% endif %}
+                {% for page in pages %}
+                    <li><a href="/pms/page/{{ page.url }}">{{ page.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <div class="js-menu-screen sliding-menu-fade-screen"></div>
+    </div>
+
+    {% include 'partials/signup.twig' %}
+    {% include 'partials/login.twig' %}
+</header>

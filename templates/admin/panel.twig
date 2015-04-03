@@ -1,0 +1,66 @@
+{# admin panel page #}
+{% extends 'main.twig' %}
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+<main class="admin panel">
+    <h2>Management Panel</h2>
+    <div class="cards">
+        <a href="admin/property" class="card">
+            <div class="card-image">
+                <img src="{{ imgPath }}house.jpg" alt="houses">
+            </div>
+            <div class="card-header">
+                Property
+            </div>
+            <div class="card-copy">
+                <p>Add apartments, rooms, update, remove, etc.</p>
+            </div>
+        </a>
+
+        <a href="admin/page" class="card">
+            <div class="card-image">
+                <img src="{{ imgPath }}page.jpg" alt="">
+            </div>
+            <div class="card-header">
+                Page
+            </div>
+            <div class="card-copy">
+                <p>Add custom pages, or remove them if they become irrelevant.</p>
+            </div>
+        </a>
+
+        <a href="admin/staff" class="card">
+            <div class="card-image">
+                <img src="{{ imgPath }}key.jpg" alt="">
+            </div>
+            <div class="card-header">
+                Staff
+            </div>
+            <div class="card-copy">
+                <p>Easily add or remove a staff, as an administrator.</p>
+            </div>
+        </a>
+
+        <a href="admin/user" class="card">
+            <div class="card-image">
+                <img src="{{ imgPath }}222.jpg" alt="">
+            </div>
+            <div class="card-header">
+                User
+            </div>
+            <div class="card-copy">
+                <p>Management panel for your users, tenants. </p>
+            </div>
+        </a>
+
+    </div>
+
+    <form action="/pms/upload/logo" method="post" enctype="multipart/form-data">
+        <label for="logo">Upload Your Logo</label>
+        <input type="file" name="logo" id="logo"/>
+        <span>{{ flash['logo_status'] }}</span>
+        <button type="submit">Upload</button>
+    </form>
+</main>
+{% endblock %}

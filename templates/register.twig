@@ -1,0 +1,70 @@
+{# admin registration page #}
+
+{% extends 'main.twig' %}
+{% block title %}Admin Registration{% endblock %}
+
+{% block content %}
+
+<main class="registration">
+    {% if is_admin %}
+        <h2>Add Admin / Staff</h2>
+    {% elseif is_staff %}
+        <h2>Add Staff</h2>
+    {% else %}
+        <h2>Admin Registration</h2>
+    {% endif %}
+    <fieldset>
+        <form action="/pms/register" method="post">
+            <p>
+                <label for="name">First Name:</label>
+                <span class="flash-error">{{ flash['reg_errs']['name'] }}</span>
+                <input type="text" id="first_name" name="first_name" value="{{ flash['old_reg']['first_name'] }}" required/>
+            </p>
+            <p>
+                <label for="name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name" value="{{ flash['old_reg']['last_name'] }}" required/>
+            </p>
+
+            <p>
+                <label for="email">Email:</label>
+                <span class="flash-error">{{ flash['reg_errs']['email'] }}</span>
+                <input type="email" id="email" name="email" value="{{ flash['old_reg']['email'] }}" required/>
+            </p>
+
+            <p>
+                <label for="password">Password:</label>
+                <span class="flash-error">{{ flash['reg_errs']['new_password'] }}</span>
+                <input type="password" id="password" name="password" required/>
+            </p>
+            <p>
+                <label for="pw_confirm">Confirm Password:</label>
+                <input type="password" id="pw_confirm" name="pw_confirm" required/>
+            </p>
+
+            <p>
+                {% if is_staff %}
+                    {#<input name="code" type="hidden" value="1"/>#}
+                {% else %}
+                    <label for="level">As</label>
+                    <span class="flash-error">{{ flash['level'] }}</span>
+                    <select name="level" id="level">
+                        <option disabled selected>-- select --</option>
+                        <option value="9">Admin</option>
+                        <option value="7">Staff</option>
+                    </select>
+                {% endif %}
+                {% if (is_staff or is_admin) %}
+                {% else %}
+                    <span class="flash-error">{{ flash['code_err'] }}</span>
+                    <input type="text" name="code" id="code" placeholder="Access Code" required/>
+                {% endif %}
+            </p>
+
+            <p>
+                <button type="submit">Register</button>
+            </p>
+        </form>
+    </fieldset>
+</main>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{# homepage #}
+{% extends 'main.twig' %}
+{% block title %}99A Bernick Dr Gallery{% endblock %}
+
+{% block content %}
+<main class="gallery">
+    <h2><a href="/pms/property">99A Bernick Dr - Gallery</a></h2>
+    <ul class="accordion-tabs-minimal">
+        <li class="tab-header-and-content">
+            <a href="#" class="tab-link is-active">
+                <img src="{{ imgPath }}121.jpg" alt="thumbnail"/>
+            </a>
+            <div class="tab-content">
+                <img src="{{ imgPath }}121.jpg" alt="property photo"/>
+                <figcaption>living room with lots of fun stuff</figcaption>
+            </div>
+        </li>
+        <li class="tab-header-and-content">
+            <a href="#" class="tab-link">
+                <img src="{{ imgPath }}81.jpg" alt="thumbnail"/>
+            </a>
+            <div class="tab-content">
+                <img src="{{ imgPath }}81.jpg" alt="property photo"/>
+                <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, fuga?</figcaption>
+            </div>
+        </li>
+        <li class="tab-header-and-content">
+            <a href="#" class="tab-link">
+                <img src="{{ imgPath }}85.jpg" alt="thumbnail"/>
+            </a>
+            <div class="tab-content">
+                <img src="{{ imgPath }}85.jpg" alt="property photo"/>
+                <figcaption>Lorem ipsum dolor sit amet.</figcaption>
+            </div>
+        </li>
+        <li class="tab-header-and-content">
+            <a href="#" class="tab-link">
+                <img src="{{ imgPath }}27.jpg" alt="thumbnail"/>
+            </a>
+            <div class="tab-content">
+                <img src="{{ imgPath }}27.jpg" alt="property photo"/>
+                <figcaption>a sturdy desk for studying.</figcaption>
+            </div>
+        </li>
+    </ul>
+    <div class="back">
+        <a href="/pms/property"><button>Back to Details</button></a>
+    </div>
+</main>
+{% endblock %}

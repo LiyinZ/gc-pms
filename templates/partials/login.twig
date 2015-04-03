@@ -1,0 +1,20 @@
+<div class="modal">
+    <input class="modal-state" id="modal-login" type="checkbox" {% if (flash['login_errs']) or (flash['login_err']) %}checked{% endif %}/>
+    <div class="modal-fade-screen">
+        <div class="modal-inner">
+            <label class="modal-close" for="modal-login"></label>
+            <span>{{ flash['login_err'] }}</span>
+            <h3>Log In</h3>
+            <form action="/pms/user/login{{ uri }}" method="post" id="login">
+                {# email #}
+                <span class="flash-error">{{ flash['login_errs']['email'] }}</span>
+                <input type="email" name="email" id="email" placeholder="Email Address" value="{{ flash['old_lg']['email'] }}" required/>
+                {# password #}
+                <span class="flash-error">{{ flash['login_errs']['password'] }}</span>
+                <input type="password" name="password" id="password" placeholder="Password" required/>
+                {# submit #}
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
+</div>

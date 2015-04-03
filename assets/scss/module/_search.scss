@@ -1,0 +1,42 @@
+form.search-bar {
+
+  width: 80%;
+  margin: 2em auto 1.3em;
+  text-align: center;
+  padding: 1em 0;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+
+  select, input, button {
+    @extend %inline-block;
+    margin: auto 1em;
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  select[name=type] {
+    border-radius: 3px;
+    box-shadow: $form-box-shadow;
+    box-sizing: border-box;
+    background-color: #FFF;
+    border: 1px solid #ddd;
+    padding: .32em;
+    width: 10em;
+  }
+  input {
+    width: 12em;
+  }
+  button {
+    padding: 0.59em 1em;
+    margin-bottom: 4px;
+    background-color: $prime-yellow;
+    &:focus,
+    &:hover {
+      background-color: darken($prime-yellow, 15%);
+    }
+  }
+
+
+}

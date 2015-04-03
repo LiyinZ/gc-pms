@@ -1,0 +1,230 @@
+main.details {
+
+  h2 {
+    padding: 0;
+  }
+
+  h4 {
+    color: #808080;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-top: -0.3em;
+  }
+
+  a.interested {
+    border: 1px solid $prime-red;
+    color: $prime-red;
+    font-weight: 500;
+    padding: .5em 1em;
+    width: 10em;
+    border-radius: 3px;
+    display: block;
+    margin: 2em auto 2.5em;
+    text-align: center;
+
+    &:hover {
+      color: $prime-green;
+      border: 1px solid $prime-green;
+    }
+    &:focus {
+      color: #fff;
+      background-color: $prime-green;
+      border: 1px solid $prime-green;
+    }
+  }
+}
+
+
+// intro images (see all photos)
+@mixin grid-item-columns($columns) {
+  width: (100% / 12) * $columns;
+}
+
+.grid-items {
+
+  @include clearfix;
+
+  .grid-item {
+    float: left;
+    height: 24em;
+    overflow: hidden;
+    outline: none;
+    padding: 2em;
+    text-align: center;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    @include media($large-screen) {
+      @include grid-item-columns(6);
+    }
+
+    p, label[for=propertyPhotos] {
+      color: #fff;
+      position: absolute;
+      bottom: -1em;
+      left: 0;
+      width: 100%;
+      background: #333;
+      background: rgba(0,0,0,.5);
+      padding: 1em;
+      font-size: 1.4em;
+    }
+    label[for=propertyPhotos] {
+      bottom: -.4em;
+      cursor: pointer;
+    }
+    input#propertyPhotos {
+      display: none;
+    }
+  }
+
+  .grid-item-image-1 {
+    display: none;
+    @include media($large-screen) {
+      display: block;
+    }
+  }
+}
+
+
+
+// room information
+.grid-items-lines {
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-background-color: white !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  $medium-screen: em(640) !default;
+  $large-screen: em(860) !default;
+  $base-font-color: $dark-gray !default;
+
+  p {
+    line-height: 1.5em;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  //////////////////////////////////////////////////////////////////////////////////
+
+  $grid-items-background: $base-background-color;
+  $grid-item-background: $base-background-color;
+  $grid-item-border: 1px solid transparentize($base-font-color, 0.8);
+  $grid-item-columns: 6;
+  $grid-item-big-columns: 8;
+  $grid-item-color: $base-font-color;
+  $grid-item-height: 14em;
+
+  @include clearfix;
+  position: relative;
+
+  .grid-item {
+    @include transition (all 0.2s ease-in-out);
+    background: $grid-item-background;
+    border-bottom: $grid-item-border;
+    border-right: $grid-item-border;
+    cursor: pointer;
+    float: left;
+    overflow: hidden;
+    outline: none;
+    padding: 2em;
+    width: 100%;
+    position: relative;
+
+    @include media($large-screen) {
+      @include grid-item-columns($grid-item-columns);
+    }
+
+    &:focus,
+    &:hover {
+      background: transparentize($grid-item-color, 0.95);
+    }
+
+    h3 {
+      color: $grid-item-color;
+      font-size: 1.3em;
+      margin-bottom: 0.4em;
+    }
+
+    /*p {
+      color: transparentize($grid-item-color, 0.4);
+
+      @include media($medium-screen) {
+        max-width: 70%;
+      }
+    }*/
+
+    img {
+      height: 6em;
+      opacity: 0.7;
+      margin-right: 5%;
+      &:focus,
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    dl {
+      display: inline-block;
+      margin-top: 0;
+      color: #333;
+    }
+
+    div {
+      display: inline-block;
+      float: right;
+      margin-top: 1em;
+      text-align: center;
+      @include media(960px) {
+        margin-right: 10%;
+      }
+
+      dl {
+        display: block;
+      }
+    }
+
+    button {
+//      float: right;
+//      margin-top: 1em;
+    }
+  }
+
+/*  .grid-item-big {
+    @include media($large-screen) {
+      @include grid-item-columns($grid-item-big-columns);
+    }
+    p {
+      @include media($medium-screen) {
+        max-width: 60%;
+      }
+    }
+  }*/
+
+  // this, below, might not be the most beautiful solution but it removes the outer borders by using the background color.
+  .bottom-cover {
+    background: $grid-items-background;
+    bottom: 0px;
+    height: 3px;
+    position: absolute;
+    width: 100%;
+  }
+
+  .right-cover {
+    background: $grid-items-background;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    width: 4px;
+  }
+}
+
+main ~ h4 {
+  padding: 1em 0 0;
+  text-align: center;
+  font-weight: 500;
+}

@@ -1,0 +1,38 @@
+{# admin page page #}
+{% extends 'main.twig' %}
+{% block title %}Add or Delete Pages{% endblock %}
+
+{% block content %}
+    <main class="admin page">
+        <h2>Manage Pages</h2>
+
+        <div class="add">
+            <a href="/pms/add/page"><button>Add a Page +</button></a>
+        </div>
+
+        <table class="table-minimal">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Link</th>
+                <th>Update</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for page in pages %}
+                <tr>
+                    <td>{{ page.title }}</td>
+                    <td><a href="/pms/page/{{ page.url }}">/{{ page.url }}</a></td>
+                    <td>
+                        <a href="/pms/edit/page/{{ page.id }}"><button class="update">Edit</button></a>
+                        <form class="delete" action="/pms/delete/page/{{ page.id }}" method="post">
+                            <input type="hidden" name="_METHOD" value="DELETE"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

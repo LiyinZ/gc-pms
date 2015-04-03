@@ -1,0 +1,14 @@
+main.registration {
+  padding-top: 80px;
+  fieldset {
+    @include media($medium-screen) {
+      @include shift(2);
+      @include span-columns(8);
+    }
+
+    @include media($large-screen) {
+      @include shift(3);
+      @include span-columns(6);
+    }
+  }
+}

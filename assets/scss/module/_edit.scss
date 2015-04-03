@@ -1,0 +1,162 @@
+main.add-property {
+  padding: 1em;
+
+  h2 {
+    padding: 0;
+  }
+
+  .address-and-type {
+    background-color: #f7f7f7;
+    input,
+    p,
+    select {
+      @extend %inline-block;
+    }
+    input,
+    p {
+      margin-right: 1em;
+    }
+    #address {
+      width: 60%;
+    }
+    #city {
+      width: 35%;
+    }
+    #postal {
+      width: 30%;
+    }
+
+    @include media($mid-screen-max) {
+      #postal {
+        width: 50%;
+      }
+    }
+  }
+
+  .grid-items-lines>.grid-item {
+    @include media($medium-screen) {
+      height: 20em;
+    }
+  }
+
+  .rooms {
+    p {
+      @extend %inline-block;
+      width: 56%;
+      position: relative;
+    }
+
+    h3>em {
+      color: #808080;
+      font-size: 0.8em;
+      font-weight: 400;
+      margin-left: 16%;
+    }
+
+    /*h5 {
+      @extend %text-center;
+      color: #808080;
+      margin: 1em;
+    }*/
+
+    label[for=status] {
+      &:focus ~ .tooltip,
+      &:hover ~ .tooltip {
+        display: inherit;
+      }
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      top: -1em;
+      left: 0;
+      background: #fff;
+      padding: 1em;
+      border: 1px solid #ddd;
+      width: 14em;
+    }
+
+    button.add-room {
+      background-color: $prime-green;
+
+      @include media($medium-screen) {
+        position: absolute;
+        left: 39%;
+        top: 15em;
+      }
+      @include media($mid-screen-max) {
+        margin-top: 1em;
+      }
+
+      &:focus,
+      &:hover {
+        background-color: darken($prime-green, 15%);
+      }
+    }
+  }
+
+}
+
+
+/* for add / edit user */
+main.edit {
+  form.user {
+    width: 70%;
+    margin: auto;
+  }
+  form.delete {
+    display: inline-block;
+  }
+
+  button {
+    margin-bottom: 1em;
+  }
+
+  button.save {
+    background-color: $prime-green;
+    display: initial;
+    margin-right: 1em;
+
+    &:focus,
+    &:hover {
+      background-color: darken($prime-green, 15%);
+    }
+  }
+  button.cancel {
+    background-color: $prime-blue;
+    margin-right: 2%;
+    margin-left: -1%;
+
+    &:focus,
+    &:hover {
+      background-color: darken($prime-blue, 15%);
+    }
+  }
+}
+
+/* for add / edit page */
+main.add-content {
+  padding: 1em;
+
+  a.cancel {
+    @include button(flat, $prime-blue);
+  }
+
+  @include media($medium-screen) {
+    .editor-guide {
+      @include span-columns(3);
+    }
+    .edit {
+      @include span-columns(9);
+    }
+  }
+}
+
+
+
+button.save {
+  display: block;
+  width: 30%;
+  margin: auto;
+}

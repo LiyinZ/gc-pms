@@ -1,0 +1,190 @@
+{# property detail page #}
+{% extends 'main.twig' %}
+{% block head %}
+    {{ parent() }}
+    <style>
+        .grid-item-image-1 {
+            background: url('{{ imgPath }}85.jpg');
+        }
+        .grid-item-image-2 {
+            background: url('{{ imgPath }}121.jpg');
+        }
+    </style>
+{% endblock %}
+{% block title %}99A Bernick Drive{% endblock %}
+
+{% block content %}
+    <div class="grid-items">
+        <a href="property/photos" class="grid-item grid-item-image-1">
+        </a>
+        <a href="property/photos" class="grid-item grid-item-image-2">
+            <p>See all 5 photos</p>
+        </a>
+    </div>
+<main class="details">
+    <h2>97 Bernick Dr, Barrie</h2>
+    <h4>Semi-Detached</h4>
+
+    <div class="grid-items-lines">
+        <a href="javascript:void(0)" class="grid-item">
+            <h3>Room A</h3>
+            <img src="{{ imgPath }}121.jpg" alt="room pic"/>
+            <dl>
+                <dt>Price</dt>
+                <dd>$560/month</dd>
+                <dt>Floor</dt>
+                <dd>2nd</dd>
+
+            </dl>
+            <div>
+                <button>Reserve</button>
+                <dl>
+                    <dt>Status</dt>
+                    <dd>Available</dd>
+                </dl>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="grid-item">
+            <h3>Room B</h3>
+            <img src="{{ imgPath }}111.jpg" alt="room pic"/>
+            <dl>
+                <dt>Price</dt>
+                <dd>$500/month</dd>
+                <dt>Floor</dt>
+                <dd>2nd</dd>
+            </dl>
+            <div>
+                <button>Reserve</button>
+                <dl>
+                    <dt>Status</dt>
+                    <dd>6 months left</dd>
+                </dl>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="grid-item">
+            <h3>Room C</h3>
+            <img src="{{ imgPath }}93.jpg" alt="room pic"/>
+            <dl>
+                <dt>Price</dt>
+                <dd>$600/month</dd>
+                <dt>Floor</dt>
+                <dd>1st</dd>
+            </dl>
+            <div>
+                <button>Reserve</button>
+                <dl>
+                    <dt>Status</dt>
+                    <dd>6 months left</dd>
+                </dl>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="grid-item">
+            <h3>Room D</h3>
+            <img src="{{ imgPath }}321.jpg" alt="room pic"/>
+            <dl>
+                <dt>Price</dt>
+                <dd>$450/month</dd>
+                <dt>Floor</dt>
+                <dd>Basement</dd>
+            </dl>
+            <div>
+                <button>Reserve</button>
+                <dl>
+                    <dt>Status</dt>
+                    <dd>Available</dd>
+                </dl>
+            </div>
+        </a>
+        <div class="right-cover"></div>
+        <div class="bottom-cover"></div>
+    </div>
+
+    <a class="interested" href="javascript:void(0)">Interested</a>
+
+    <div class="vertical-tabs-container">
+        <div class="vertical-tabs">
+            <a href="javascript:void(0)" class="js-vertical-tab vertical-tab is-active" rel="tab1">About This Listing</a>
+            <a href="javascript:void(0)" class="js-vertical-tab vertical-tab" rel="tab2">Standard Features</a>
+            <a href="javascript:void(0)" class="js-vertical-tab vertical-tab" rel="tab3">Exclusive Features</a>
+        </div>
+
+        <div class="vertical-tab-content-container">
+            <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading is-active" rel="tab1">About This Listing</a>
+            <div id="tab1" class="js-vertical-tab-content vertical-tab-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt pellentesque lorem, id suscipit dolor rutrum id. Morbi facilisis porta volutpat. Fusce adipiscing, mauris quis congue tincidunt, sapien purus suscipit odio, quis dictum odio tortor in sem. Ut sit amet libero nec orci mattis fringilla. Praesent eu ipsum in sapien tincidunt molestie sed ut magna. Nam accumsan dui at orci rhoncus pharetra tincidunt elit ullamcorper. Sed ac mauris ipsum. Nullam imperdiet sapien id purus pretium id aliquam mi ullamcorper.</p>
+            </div>
+
+            <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading" rel="tab2">Standard Features</a>
+            <div id="tab2" class="js-vertical-tab-content vertical-tab-content">
+                <p>Ut laoreet augue et neque pretium non sagittis nibh pulvinar. Etiam ornare tincidunt orci quis ultrices. Pellentesque ac sapien ac purus gravida ullamcorper. Duis rhoncus sodales lacus, vitae adipiscing tellus pharetra sed. Praesent bibendum.</p>
+            </div>
+
+            <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading" rel="tab3">Exclusive Features</a>
+            <div id="tab3" class="js-vertical-tab-content vertical-tab-content">
+                <p>Donec mattis mauris gravida metus laoreet non rutrum sem viverra. Aenean nibh libero, viverra vel vestibulum in, porttitor ut sapien. Phasellus tempor lorem id justo ornare tincidunt. Nulla faucibus, purus eu placerat fermentum, velit mi iaculis nunc, bibendum tincidunt ipsum justo eu mauris. Nulla facilisi. Vestibulum vel lectus ac purus tempus suscipit nec sit amet eros. Nullam fringilla, enim eu lobortis dapibus, quam magna tincidunt nibh, sit amet imperdiet dolor justo congue turpis.</p>
+            </div>
+        </div>
+    </div>
+</main>
+    <h4>97 Bernick Dr, Barrie, ON L4M 5C1</h4>
+    <div id="map_canvas"></div>
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        var bittersMap = (function () {
+            var myLatlng = new google.maps.LatLng(59.342457, 18.057340),
+                    mapCenter = new google.maps.LatLng(59.340458, 18.057340),
+                    mapCanvas = document.getElementById('map_canvas'),
+                    mapOptions = {
+                        center: mapCenter,
+                        zoom: 13,
+                        scrollwheel: false,
+                        draggable: true,
+                        disableDefaultUI: true,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    },
+                    map = new google.maps.Map(mapCanvas, mapOptions),
+                    contentString =
+                            '<div id="content">'+
+                            '<div id="siteNotice">'+
+                            '</div>'+
+                            '<h1 id="firstHeading" class="firstHeading">thoughtbot</h1>'+
+                            '<div id="bodyContent"'+
+                            '<p>Sveavägen 98</p>'+
+                            '</div>'+
+                            '</div>',
+                    infowindow = new google.maps.InfoWindow({
+                        content: contentString,
+                        maxWidth: 300
+                    }),
+                    marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        title: 'thoughtbot (Sweden)'
+                    });
+
+            return {
+                init: function () {
+                    map.set('styles', [{
+                        featureType: 'landscape',
+                        elementType: 'geometry',
+                        stylers: [
+                            { hue: '#ffff00' },
+                            { saturation: 30 },
+                            { lightness: 10}
+                        ]}
+                    ]);
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.open(map,marker);
+                    });
+                }
+            };
+        }());
+
+        bittersMap.init();
+    </script>
+{% endblock %}

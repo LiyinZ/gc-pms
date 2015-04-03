@@ -1,0 +1,46 @@
+main.admin {
+
+  h2 {
+    color: $prime-blue;
+  }
+
+  a.card {
+    color: $dark-gray;
+  }
+
+  .add {
+    @extend %text-center;
+  }
+
+  &.property, &.user, &.staff {
+
+    td img {
+      max-height: 5em;
+    }
+
+    @include media($mid-screen-max) {
+      table.table-minimal {
+        tr>th:nth-of-type(3), tr>td:nth-of-type(3) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.panel {
+
+  form {
+    @extend %text-center;
+
+    input#logo {
+      width: 15em;
+      margin: auto;
+    }
+  }
+
+}
+
+form.delete {
+  @extend %inline-block;
+}

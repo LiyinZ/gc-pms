@@ -1,0 +1,98 @@
+main {
+  @extend %container;
+//  background-color: $main-bg-color;
+  padding: 1em 0;
+  border-radius: 2px;
+
+  h2 {
+    font-size: 2.1em;
+    text-align: center;
+    color: #777;
+    padding: .5em 0 .3em;
+    font-weight: 500;
+  }
+
+  %view-more {
+    display: block;
+    text-align: center;
+    width: 20%;
+    border-radius: 5px;
+    padding: 7px 2px;
+    font-weight: 500;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  a#view-more {
+    @extend %view-more;
+    color: $prime-green;
+    border: 1px solid $prime-green;
+    margin: 2em auto 4em;
+    &:hover {
+      background-color: $prime-green;
+    }
+  }
+  a#more-features {
+    @extend %view-more;
+    color: $prime-red;
+    border: 1px solid $prime-red;
+    margin: -1em auto 3em;
+    &:hover {
+      background-color: $prime-red;
+    }
+  }
+}
+
+main.listings, main.gallery, main.admin, main.profile, main.not-found {
+  padding: 66px 0 1em;
+}
+
+main.page-content {
+  padding: 1em 0 5em;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @extend %text-center;
+    margin: 0;
+  }
+
+  h2 {
+    padding: .5em 0 0;
+  }
+
+  h3 {
+    font-size: 1.8em;
+  }
+  h4 {
+    font-size: 1.4em;
+  }
+  h5 {
+    font-size: 1.2em;
+  }
+
+  p, ul, ol {
+    margin: 1em 13%;
+
+    @include media($mid-screen-max) {
+      margin: 1em 5%;
+    }
+  }
+  ol {
+    list-style-type: decimal;
+    padding: 0 1.7em;
+  }
+  ul {
+    list-style-type: disc;
+    padding: 0 1.5em;
+  }
+}
+
+main.profile, main.not-found {
+  @extend %text-center;
+}

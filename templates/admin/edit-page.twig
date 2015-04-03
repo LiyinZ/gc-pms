@@ -1,0 +1,79 @@
+{# add custom page #}
+{% extends 'main.twig' %}
+{% block title %}Create New Page{% endblock %}
+{% block head %}
+    {{ parent() }}
+    {% if page is defined %}
+        {% set bg_image = imgPath ~ page.cover_file_name %}
+    {% endif %}
+    <style>
+        .cover-photo {
+            background-image: url('{{ bg_image|default('http://placehold.it/1280x400') }}');
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% if page.id %}
+        <form action="/pms/update/page/{{ page.id }}" method="post" enctype="multipart/form-data">
+    {% else %}
+        <form action="/pms/create/page" method="post" enctype="multipart/form-data">
+    {% endif %}
+    <div class="cover-photo">
+        <div class="heading">
+            {# page title #}
+            <span class="flash-error">{{ flash['page_errs']['title'] }}</span>
+            <span class="flash-error">{{ flash['page_errs']['duplicate'] }}</span>
+            <input type="text" name="title" id="title" placeholder="Page Title (link name)" value="{{ flash['old_page']['title']|default(page.title) }}" required/>
+            {# page subtitle #}
+            <span class="flash-error">{{ flash['page_errs']['subtitle'] }}</span>
+            <input type="text" name="subtitle" id="subtitle" placeholder="subtitle (optional)" value="{{ flash['old_page']['subtitle']|default(page.subtitle) }}"/>
+        </div>
+        <div class="overlay">
+            {# upload cover #}
+            <span class="flash-error">{{ flash['page_errs']['cover'] }}</span>
+            <label for="cover">Upload Photo Cover for This Page</label>
+            <input type="file" name="cover" id="cover"/>
+        </div>
+    </div>
+
+    <main class="add-content" role="main">
+        <div class="row">
+            <div class="editor-guide">
+                <h3>Guide for Using Markdown</h3>
+                <ul>
+                    <li># heading 1</li>
+                    <li>## heading 2</li>
+                    <li>### heading 3</li>
+                    <li>#### heading 4</li>
+                    <li>##### heading 5</li>
+                    <li>###### heading 6</li>
+                    <li>**<strong>bold</strong>**</li>
+                    <li>*<em>italicize</em>*</li>
+                    <li>1. order list</li>
+                    <li>2. order list</li>
+                    <li>3. order list</li>
+                    <li>- Unordered list item</li>
+                    <li>- Unordered list item</li>
+                    <li>- Unordered list item</li>
+                    <li>*** horizontal rule</li>
+                    <li>Links / URLs: </li>
+                    <li>[www.aol.ca](http://www.aol.ca)</li>
+                    <li>[AOL](http://aol.ca)</li>
+                </ul>
+                <br/>
+                <p>For more information, check out <a
+                            href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a></p>
+            </div>
+            <div class="edit">
+                {# edit main content #}
+                <label for="content">Page Content - Start Editing</label>
+                <span class="flash-error">{{ flash['page_errs']['content'] }}</span>
+                <textarea name="content" id="content" cols="30" rows="20" placeholder="start creating your own page!">{{ flash['old_page']['content']|default(page.content|raw) }}</textarea>
+            </div>
+        </div>
+        <a class="cancel" href="/pms/admin/page">Cancel</a>
+        <button type="submit" class="save">Save</button>
+    </main>
+    </form>
+{% endblock %}
