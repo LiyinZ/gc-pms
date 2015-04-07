@@ -1793,43 +1793,52 @@ main.add-property {
   @media screen and (min-width: 40em) {
     main.add-property .grid-items-lines > .grid-item {
       height: 20em; } }
-  main.add-property .rooms {
-    /*h5 {
-      @extend %text-center;
-      color: #808080;
-      margin: 1em;
-    }*/ }
-    main.add-property .rooms p {
-      width: 56%;
-      position: relative; }
-    main.add-property .rooms h3 > em {
-      color: #808080;
-      font-size: 0.8em;
-      font-weight: 400;
-      margin-left: 16%; }
-    main.add-property .rooms label[for=status]:focus ~ .tooltip, main.add-property .rooms label[for=status]:hover ~ .tooltip {
-      display: inherit; }
-    main.add-property .rooms .tooltip {
-      display: none;
-      position: absolute;
-      top: -1em;
-      left: 0;
-      background: #fff;
-      padding: 1em;
-      border: 1px solid #ddd;
-      width: 14em; }
-    main.add-property .rooms button.add-room {
-      background-color: #04CB5D; }
-      @media screen and (min-width: 40em) {
-        main.add-property .rooms button.add-room {
-          position: absolute;
-          left: 39%;
-          top: 15em; } }
-      @media screen and (max-width: 40em)  {
-        main.add-property .rooms button.add-room {
-          margin-top: 1em; } }
-      main.add-property .rooms button.add-room:focus, main.add-property .rooms button.add-room:hover {
-        background-color: #03803b; }
+  main.add-property .rooms p {
+    width: 56%;
+    float: right;
+    margin-right: .5em; }
+  main.add-property .rooms h3 > em {
+    color: #808080;
+    font-size: 0.8em;
+    font-weight: 400;
+    margin-left: 16%; }
+  main.add-property .rooms label[for=roomPic] {
+    background: #CCC;
+    display: inline-block;
+    width: 8em;
+    height: 6em;
+    text-align: center;
+    padding-top: 2.2em;
+    cursor: pointer;
+    opacity: .7; }
+    main.add-property .rooms label[for=roomPic]:focus, main.add-property .rooms label[for=roomPic]:hover {
+      opacity: 1;
+      color: #fff; }
+  main.add-property .rooms input#roomPic {
+    display: none; }
+  main.add-property .rooms label[for=status]:focus ~ .tooltip, main.add-property .rooms label[for=status]:hover ~ .tooltip {
+    display: inherit; }
+  main.add-property .rooms .tooltip {
+    display: none;
+    position: absolute;
+    top: -1em;
+    left: 0;
+    background: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    width: 14em; }
+  main.add-property .rooms button.add-room {
+    background-color: #04CB5D; }
+    @media screen and (min-width: 40em) {
+      main.add-property .rooms button.add-room {
+        position: absolute;
+        left: 39%;
+        top: 15em; } }
+    @media screen and (max-width: 40em)  {
+      main.add-property .rooms button.add-room {
+        margin-top: 1em; } }
+    main.add-property .rooms button.add-room:focus, main.add-property .rooms button.add-room:hover {
+      background-color: #03803b; }
 
 /* for add / edit user */
 main.edit form.user {

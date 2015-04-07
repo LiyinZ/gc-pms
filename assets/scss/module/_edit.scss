@@ -43,7 +43,8 @@ main.add-property {
     p {
       @extend %inline-block;
       width: 56%;
-      position: relative;
+      float: right;
+      margin-right: .5em;
     }
 
     h3>em {
@@ -53,11 +54,25 @@ main.add-property {
       margin-left: 16%;
     }
 
-    /*h5 {
-      @extend %text-center;
-      color: #808080;
-      margin: 1em;
-    }*/
+    label[for=roomPic] {
+      background: #CCC;
+      display: inline-block;
+      width: 8em;
+      height: 6em;
+      text-align: center;
+      padding-top: 2.2em;
+      cursor: pointer;
+      opacity: .7;
+
+      &:focus,
+      &:hover {
+        opacity: 1;
+        color: #fff;
+      }
+    }
+    input#roomPic {
+      display: none;
+    }
 
     label[for=status] {
       &:focus ~ .tooltip,
